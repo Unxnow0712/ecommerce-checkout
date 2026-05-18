@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Checkout System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="checkout-page" class="page active">
+        <!-- Products Section -->
+        <main class="products-section">
+            <h1 class="page-title">Produk Pilihan</h1>
+            <div class="products-grid" id="products-container">
+                <!-- Products will be injected by JS -->
+            </div>
+        </main>
+
+        <!-- Sidebar Section -->
+        <aside class="sidebar">
+            <h2 class="sidebar-title">Detail Pesanan</h2>
+
+            <div class="input-group">
+                <input type="text" id="nama" class="input-field" placeholder="INPUT NAMA">
+            </div>
+
+            <div class="input-group checkbox-group">
+                <label>
+                    <input type="checkbox" id="member"> Member (Diskon 10%)
+                </label>
+            </div>
+
+            <div class="input-group checkbox-group">
+                <label>
+                    <input type="checkbox" id="voucher"> Voucher idhul adha (Diskon Rp 15.000)
+                </label>
+            </div>
+
+            <div class="input-group">
+                <input type="number" id="jarak" class="input-field2" placeholder="INPUT JARAK (KM)" min="1"><span
+                    class="km-label">KM</span>
+            </div>
+
+            <div class="spacer"></div>
+
+            <div class="subtotal-box">
+                <div class="subtotal-label">TOTAL HARGA SEMENTARA</div>
+                <div class="subtotal-value" id="subtotal">Rp 0</div>
+            </div>
+
+            <button id="checkout-btn" class="checkout-btn">TOMBOL CHECK-OUT</button>
+        </aside>
+    </div>
+
+    <div id="result-page" class="page">
+        <div class="result-container">
+            <h1>Ringkasan Pesanan</h1>
+            <div class="receipt">
+                <div class="receipt-header">
+                    <p><strong>Nama Pemesan:</strong> <span id="res-nama"></span></p>
+                    <p><strong>Jarak Pengiriman:</strong> <span id="res-jarak"></span> km</p>
+                </div>
+
+                <div class="receipt-body">
+                    <h3>Item:</h3>
+                    <ul id="res-items" class="receipt-items"></ul>
+                </div>
+
+                <div class="receipt-footer">
+                    <div class="receipt-row">
+                        <span>Total Harga Barang:</span>
+                        <span id="res-total-barang"></span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Ongkos Kirim:</span>
+                        <span id="res-ongkir"></span>
+                    </div>
+                    <div class="receipt-row text-green" id="row-diskon-member" style="display: none;">
+                        <span>Diskon Member (10%):</span>
+                        <span id="res-diskon-member"></span>
+                    </div>
+                    <div class="receipt-row text-green" id="row-diskon-voucher" style="display: none;">
+                        <span>Diskon Voucher:</span>
+                        <span id="res-diskon-voucher"></span>
+                    </div>
+                    <hr>
+                    <div class="receipt-row final-total">
+                        <span>TOTAL AKHIR:</span>
+                        <span id="res-total-akhir"></span>
+                    </div>
+                </div>
+            </div>
+            <button id="back-btn" class="back-btn">Kembali Berbelanja</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
