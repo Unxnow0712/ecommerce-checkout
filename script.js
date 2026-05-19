@@ -82,8 +82,10 @@ document.getElementById("checkout-btn").addEventListener("click", function() {
     // 1. Ambil semua nilai dari inputan pengguna
     let nama = document.getElementById("nama").value;
     let jarak = document.getElementById("jarak").value;
-    let kodeMember = document.getElementById("member").value.toUpperCase(); // Convert ke uppercase
-    let kodeVoucher = document.getElementById("voucher").value.toUpperCase(); // Convert ke uppercase
+
+    // Convert ke uppercase - HANYA DIDEKLARASIKAN SATU KALI
+    let kodeMember = document.getElementById("member").value.toUpperCase(); 
+    let kodeVoucher = document.getElementById("voucher").value.toUpperCase(); 
     
     // 2. Validasi sederhana
     if (nama == "") {
@@ -145,7 +147,7 @@ document.getElementById("checkout-btn").addEventListener("click", function() {
     let member = false;
     let voucher = false;
     
-    // Perbaikan Kode Member:
+    // Perbaikan Kode Member: Logika array tanpa tercampur if-else lama
     let daftarMemberValid = ["MEMBER123", "MEMBER456", "MEMBER789"];
     
     if (kodeMember !== "") {
@@ -156,9 +158,9 @@ document.getElementById("checkout-btn").addEventListener("click", function() {
             alert("Kode Member tidak valid!");
             return;
         }
-    }
-    
-    // Perbaikan Kode Voucher:
+    } // <-- Penutup block yang sebelumnya hilang
+
+    // Perbaikan Kode Voucher: Logika array tanpa tercampur if-else lama
     let daftarVoucherValid = ["IDHUL2024", "PROMO2026", "BANDUNG2026"];
     
     if (kodeVoucher !== "") {
@@ -169,7 +171,7 @@ document.getElementById("checkout-btn").addEventListener("click", function() {
             alert("Kode Voucher tidak valid!");
             return;
         }
-    }
+    } // <-- Penutup block yang sebelumnya hilang
     
     // 6. Hitung total akhir
     let totalAkhir = totalBarang + ongkir - diskonMember - diskonVoucher;
