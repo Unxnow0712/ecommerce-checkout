@@ -3,9 +3,10 @@ let products = [
     { name: "Daging Sapi", price: 15000, unit: "100g", qty: 0, image: "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?w=400&q=80" },
     { name: "Daging Kambing", price: 14000, unit: "100g", qty: 0, image: "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=400&q=80" },
     { name: "Daging Ayam", price: 4000, unit: "100g", qty: 0, image: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=400&q=80" },
-    { name: "Telur", price: 3000, unit: "100g", qty: 0, image: "https://images.unsplash.com/photo-1587486913049-53fc88980fdc?w=400&q=80" },
+    { name: "Telur", price: 3000, unit: "100g", qty: 0, image: "https://images.unsplash.com/photo-1639194335563-d56b83f0060c?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
     { name: "Udang", price: 8000, unit: "100g", qty: 0, image: "https://images.unsplash.com/photo-1559742811-822873691df8?w=400&q=80" },
-    { name: "Cumi", price: 7000, unit: "100g", qty: 0, image: "https://images.unsplash.com/photo-1615486171448-4fd682e04313?w=400&q=80" }
+    { name: "Cumi", price: 7000, unit: "100g", qty: 0, image: "https://images.unsplash.com/photo-1716175908279-fccb15fff4b7?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { name: "Ikan", price: 12000, unit: "1kg", qty: 0, image: "https://images.unsplash.com/photo-1576330383200-2bf325cfec52?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }
 ];
 
 // Fungsi bantuan untuk memformat uang menjadi tulisan Rupiah (Sederhana)
@@ -81,8 +82,8 @@ document.getElementById("checkout-btn").addEventListener("click", function() {
     // 1. Ambil semua nilai dari inputan pengguna
     let nama = document.getElementById("nama").value;
     let jarak = document.getElementById("jarak").value;
-    let member = document.getElementById("member").checked;
-    let voucher = document.getElementById("voucher").checked;
+    let kodeMember = document.getElementById("member").value.toUpperCase(); // Convert ke uppercase
+    let kodeVoucher = document.getElementById("voucher").value.toUpperCase(); // Convert ke uppercase
     
     // 2. Validasi sederhana
     if (nama == "") {
@@ -141,13 +142,33 @@ document.getElementById("checkout-btn").addEventListener("click", function() {
     // 5. Hitung diskon sederhana
     let diskonMember = 0;
     let diskonVoucher = 0;
+    let member = false;
+    let voucher = false;
     
-    if (member == true) {
-        diskonMember = totalBarang * 0.10; // Diskon member = 10% dari barang
+    // Perbaikan Kode Member:
+    let daftarMemberValid = ["MEMBER123", "MEMBER456", "MEMBER789"];
+    
+    if (kodeMember !== "") {
+        if (daftarMemberValid.includes(kodeMember)) {
+            member = true;
+            diskonMember = totalBarang * 0.10;
+        } else {
+            alert("Kode Member tidak valid!");
+            return;
+        }
     }
     
-    if (voucher == true) {
-        diskonVoucher = 15000; // Diskon voucher = Potongan 15 ribu
+    // Perbaikan Kode Voucher:
+    let daftarVoucherValid = ["IDHUL2024", "PROMO2026", "BANDUNG2026"];
+    
+    if (kodeVoucher !== "") {
+        if (daftarVoucherValid.includes(kodeVoucher)) {
+            voucher = true;
+            diskonVoucher = 15000;
+        } else {
+            alert("Kode Voucher tidak valid!");
+            return;
+        }
     }
     
     // 6. Hitung total akhir
@@ -167,6 +188,22 @@ document.getElementById("checkout-btn").addEventListener("click", function() {
     document.getElementById("res-jarak").textContent = jarak;
     document.getElementById("res-items").innerHTML = daftarBarangHtml;
     document.getElementById("res-total-barang").textContent = formatUang(totalBarang);
+    
+    // Tampilkan Kode Member jika ada
+    if (member == true) {
+        document.getElementById("res-kode-member-row").style.display = "block";
+        document.getElementById("res-kode-member").textContent = kodeMember;
+    } else {
+        document.getElementById("res-kode-member-row").style.display = "none";
+    }
+    
+    // Tampilkan Kode Voucher jika ada
+    if (voucher == true) {
+        document.getElementById("res-kode-voucher-row").style.display = "block";
+        document.getElementById("res-kode-voucher").textContent = kodeVoucher;
+    } else {
+        document.getElementById("res-kode-voucher-row").style.display = "none";
+    }
     
     // Atur teks ongkos kirim (hijau kalau gratis)
     if (ongkir == 0) {

@@ -11,9 +11,17 @@
 
 <body>
     <div id="checkout-page" class="page active">
+        <!-- Header with Logo and Brand -->
+        <div class="header-section">
+            <div class="brand-container">
+                <img src="/asset/logo.png" alt="Kawan Dapur" class="brand-logo">
+                <h1 class="brand-name">Kawan Dapur</h1>
+            </div>
+        </div>
+
         <!-- Products Section -->
         <main class="products-section">
-            <h1 class="page-title">Produk Pilihan</h1>
+            <h2 class="page-title">Produk Pilihan</h2>
             <div class="products-grid" id="products-container">
                 <!-- Products will be injected by JS -->
             </div>
@@ -27,16 +35,12 @@
                 <input type="text" id="nama" class="input-field" placeholder="INPUT NAMA">
             </div>
 
-            <div class="input-group checkbox-group">
-                <label>
-                    <input type="checkbox" id="member"> Member (Diskon 10%)
-                </label>
+            <div class="input-group">
+                <input type="text" id="member" class="input-field" placeholder="KODE MEMBER (Diskon 10%)">
             </div>
 
-            <div class="input-group checkbox-group">
-                <label>
-                    <input type="checkbox" id="voucher"> Voucher idhul adha (Diskon Rp 15.000)
-                </label>
+            <div class="input-group">
+                <input type="text" id="voucher" class="input-field" placeholder="KODE VOUCHER (Diskon Rp 15.000)">
             </div>
 
             <div class="input-group">
@@ -62,6 +66,8 @@
                 <div class="receipt-header">
                     <p><strong>Nama Pemesan:</strong> <span id="res-nama"></span></p>
                     <p><strong>Jarak Pengiriman:</strong> <span id="res-jarak"></span> km</p>
+                    <p id="res-kode-member-row" style="display: none;"><strong>Kode Member:</strong> <span id="res-kode-member"></span></p>
+                    <p id="res-kode-voucher-row" style="display: none;"><strong>Kode Voucher:</strong> <span id="res-kode-voucher"></span></p>
                 </div>
 
                 <div class="receipt-body">
@@ -100,4 +106,4 @@
     <script src="script.js"></script>
 </body>
 
-</html>
+</html>>

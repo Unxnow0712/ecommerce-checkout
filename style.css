@@ -6,8 +6,8 @@
 }
 
 body {
-    background-color: #f9fafb;
-    color: #111;
+    background: linear-gradient(135deg, #FFF5E6 0%, #FFF9F0 100%);
+    color: #2C1810;
     height: 100vh;
     overflow: hidden;
 }
@@ -25,10 +25,58 @@ body {
 /* -- Checkout Page Layout -- */
 #checkout-page {
     display: none;
+    flex-direction: column;
 }
 
 #checkout-page.active {
     display: flex;
+}
+
+/* Header with Logo and Brand */
+.header-section {
+    background: linear-gradient(135deg, #D4A574 0%, #C19A6B 100%);
+    padding: 30px 40px;
+    box-shadow: 0 4px 20px rgba(180, 120, 80, 0.15);
+    border-bottom: 3px solid #A0703D;
+}
+
+.brand-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.brand-logo {
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 1px;
+    box-sizing: border-box;
+    border: 3px solid #fff;
+}
+
+.brand-name {
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.5px;
+}
+
+/* Main Content Wrapper */
+#checkout-page.active {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    grid-template-rows: auto 1fr;
+}
+
+.header-section {
+    grid-column: 1 / -1;
 }
 
 /* Products Section */
@@ -36,6 +84,7 @@ body {
     flex: 1;
     padding: 40px;
     overflow-y: auto;
+    background: linear-gradient(180deg, #FFFBF5 0%, #FFF8F0 100%);
 }
 
 /* Custom Scrollbar for Products */
@@ -55,7 +104,7 @@ body {
 .page-title {
     font-size: 28px;
     margin-bottom: 30px;
-    color: #111;
+    color: #A0703D;
     font-weight: 700;
 }
 
@@ -74,20 +123,21 @@ body {
     flex-direction: column;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-    transition: transform 0.2s, box-shadow 0.2s;
-    border: 1px solid #f3f4f6;
+    box-shadow: 0 4px 15px rgba(180, 120, 80, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    border: 2px solid #E8D4C0;
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(180, 120, 80, 0.25);
+    border-color: #D4A574;
 }
 
 .product-image {
     width: 100%;
     aspect-ratio: 4/3;
-    background-color: #f3f4f6;
+    background: linear-gradient(135deg, #E8D4C0 0%, #F5E6D3 100%);
     background-size: cover;
     background-position: center;
 }
@@ -106,6 +156,7 @@ body {
     margin-bottom: 5px;
     text-transform: uppercase;
     text-align: center;
+    color: #2C1810;
 }
 
 .product-price {
@@ -113,6 +164,7 @@ body {
     font-size: 14px;
     margin-bottom: 15px;
     text-align: center;
+    color: #D4A574;
 }
 
 .qty-control {
@@ -120,7 +172,7 @@ body {
     align-items: center;
     gap: 12px;
     margin-top: auto;
-    background-color: #f3f4f6;
+    background: linear-gradient(135deg, #F5E6D3 0%, #EDDCC8 100%);
     padding: 5px;
     border-radius: 8px;
 }
@@ -133,12 +185,14 @@ body {
     font-weight: bold;
     cursor: pointer;
     border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(180, 120, 80, 0.15);
     transition: background-color 0.2s;
+    color: #A0703D;
 }
 
 .qty-btn:hover {
-    background-color: #e5e7eb;
+    background-color: #D4A574;
+    color: #fff;
 }
 
 .qty-input {
@@ -154,14 +208,15 @@ body {
 /* Sidebar Section */
 .sidebar {
     width: 380px;
-    background-color: #fff;
+    background: linear-gradient(180deg, #FFFBF5 0%, #FFF8F0 100%);
     padding: 40px;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.05);
+    box-shadow: -4px 0 20px rgba(180, 120, 80, 0.1);
     z-index: 10;
     overflow-y: auto;
+    border-left: 3px solid #D4A574;
 }
 
 .sidebar-title {
@@ -172,48 +227,52 @@ body {
 .input-field {
     width: 100%;
     padding: 16px;
-    border: 1px solid #e5e7eb;
+    border: 2px solid #E8D4C0;
     border-radius: 8px;
     font-size: 14px;
     font-weight: 600;
     text-align: center;
-    background-color: #f9fafb;
+    background-color: #fff;
     outline: none;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, background-color 0.2s;
+    color: #2C1810;
 }
 
 .input-field2 {
     width: 76%;
     padding: 16px;
-    border: 1px solid #e5e7eb;
+    border: 2px solid #E8D4C0;
     border-radius: 8px;
     font-size: 14px;
     font-weight: 600;
     text-align: center;
-    background-color: #f9fafb;
+    background-color: #fff;
     outline: none;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, background-color 0.2s;
+    color: #2C1810;
 }
 
 .input-field:focus {
-    border-color: #111;
-    background-color: #fff;
+    border-color: #D4A574;
+    background-color: #FFFBF5;
 }
 
 .checkbox-group {
-    background-color: #f9fafb;
-    border: 1px solid #e5e7eb;
+    background: linear-gradient(135deg, #F5E6D3 0%, #EDDCC8 100%);
+    border: 2px solid #E8D4C0;
     border-radius: 8px;
     padding: 16px;
     text-align: center;
     font-weight: 600;
     font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, border-color 0.2s;
+    color: #2C1810;
 }
 
 .checkbox-group:hover {
-    background-color: #f3f4f6;
+    background: linear-gradient(135deg, #E8D4C0 0%, #DCC7B3 100%);
+    border-color: #D4A574;
 }
 
 .checkbox-group label {
@@ -229,26 +288,27 @@ body {
 }
 
 .subtotal-box {
-    background-color: #f9fafb;
-    border: 1px solid #e5e7eb;
+    background: linear-gradient(135deg, #D4A574 0%, #C19A6B 100%);
+    border: 2px solid #A0703D;
     border-radius: 8px;
     padding: 20px;
     text-align: center;
     font-weight: 700;
     font-size: 15px;
     margin-bottom: 5px;
+    color: #fff;
 }
 
 .subtotal-label {
     margin-bottom: 8px;
-    color: #6b7280;
+    color: #E8D4C0;
     font-size: 13px;
     text-transform: uppercase;
 }
 
 .subtotal-value {
     font-size: 20px;
-    color: #111;
+    color: #fff;
 }
 
 .checkout-btn {
@@ -256,20 +316,19 @@ body {
     padding: 18px;
     border: none;
     border-radius: 8px;
-    background-color: #ccff00;
-    /* Lime green yellow */
-    color: #111;
+    background: linear-gradient(135deg, #FFD966 0%, #FFC266 100%);
+    color: #2C1810;
     font-weight: 800;
     font-size: 16px;
     cursor: pointer;
     transition: all 0.2s;
-    box-shadow: 0 4px 15px rgba(204, 255, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 166, 102, 0.3);
 }
 
 .checkout-btn:hover {
-    background-color: #b8e600;
+    background: linear-gradient(135deg, #FFC266 0%, #FFB966 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(204, 255, 0, 0.4);
+    box-shadow: 0 6px 20px rgba(255, 166, 102, 0.4);
 }
 
 /* Result Page */
@@ -277,7 +336,7 @@ body {
     display: none;
     justify-content: center;
     align-items: center;
-    background-color: #f3f4f6;
+    background: linear-gradient(135deg, #FFF5E6 0%, #FFF9F0 100%);
 }
 
 #result-page.active {
@@ -288,29 +347,31 @@ body {
     background-color: #fff;
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px rgba(180, 120, 80, 0.15);
     width: 100%;
     max-width: 500px;
+    border: 3px solid #D4A574;
 }
 
 .result-container h1 {
     text-align: center;
     margin-bottom: 25px;
     font-size: 24px;
-    color: #111;
+    color: #A0703D;
 }
 
 .receipt {
-    background-color: #f9fafb;
+    background: linear-gradient(135deg, #F5E6D3 0%, #EDDCC8 100%);
     padding: 20px;
     border-radius: 8px;
-    border: 1px solid #e5e7eb;
+    border: 2px solid #D4A574;
 }
 
 .receipt-header {
-    border-bottom: 1px dashed #ccc;
+    border-bottom: 2px dashed #D4A574;
     padding-bottom: 15px;
     margin-bottom: 15px;
+    color: #2C1810;
 }
 
 .receipt-header p {
@@ -321,11 +382,13 @@ body {
 .receipt-body h3 {
     font-size: 16px;
     margin-bottom: 10px;
+    color: #A0703D;
 }
 
 .receipt-items {
     list-style: none;
     margin-bottom: 20px;
+    color: #2C1810;
 }
 
 .receipt-item {
@@ -336,7 +399,7 @@ body {
 }
 
 .receipt-footer {
-    border-top: 1px dashed #ccc;
+    border-top: 2px dashed #D4A574;
     padding-top: 15px;
 }
 
@@ -345,6 +408,7 @@ body {
     justify-content: space-between;
     margin-bottom: 8px;
     font-size: 15px;
+    color: #2C1810;
 }
 
 .text-green {
@@ -361,16 +425,34 @@ body {
     width: 100%;
     padding: 15px;
     border: none;
-    background-color: #111;
+    background: linear-gradient(135deg, #D4A574 0%, #C19A6B 100%);
     color: #fff;
     font-weight: 600;
     font-size: 16px;
     cursor: pointer;
     border-radius: 6px;
     margin-top: 25px;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, transform 0.2s;
 }
 
 .back-btn:hover {
-    background-color: #333;
+    background: linear-gradient(135deg, #C19A6B 0%, #A0703D 100%);
+    transform: translateY(-2px);
+}
+
+.km-label {
+    position: relative;
+    width: 20%;
+    text-align: center;
+    font-weight: 600;
+    color: #A0703D;
+    font-size: 14px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+hr {
+    border: none;
+    border-top: 2px dashed #D4A574;
 }
