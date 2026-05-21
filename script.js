@@ -76,7 +76,6 @@ function hitungSubtotal() {
 // Menjalankan fungsi pertama kali agar layar tidak kosong
 tampilkanProduk();
 
-
 // --- LOGIKA SAAT TOMBOL CHECKOUT DIKLIK --- //
 document.getElementById("checkout-btn").addEventListener("click", function() {
     // 1. Ambil semua nilai dari inputan pengguna
@@ -91,6 +90,12 @@ document.getElementById("checkout-btn").addEventListener("click", function() {
     if (nama == "") {
         alert("Nama tidak boleh kosong!");
         return; // Hentikan kode jika nama kosong
+    }
+    
+    // Validasi nama hanya boleh huruf dan spasi
+    if (!/^[a-zA-Z\s]+$/.test(nama)) {
+        alert("❌ DILARANG!\n\nNama hanya boleh menggunakan huruf saja.\nTidak boleh ada angka, karakter, atau simbol!");
+        return;
     }
     
     if (jarak == "" || jarak <= 0) {
